@@ -1,5 +1,7 @@
-import java.util.*;
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Scanner;
 
 public class Main{
     PrintWriter pw;
@@ -25,7 +27,8 @@ public class Main{
     int n = 0, vs = 0, hs = 0;
     String vertical[][] = new String[100000][102];
     String horisontal[][] = new String[100000][102];
-    boolean slide[][] = new boolean[100000][100000];
+    boolean slide[][] = new boolean[10000][10000];
+    int htov[][] = new int[10000][10000];
     public int common(int a, int b){
         int result = 0;
         for (int i = 1; i <= Integer.parseInt(vertical[a][0]); i++){
@@ -39,6 +42,11 @@ public class Main{
     }
 
     public void HtoV(){
+        for (int i = 0; i < hs - 1; i++){
+            for (int j = i + 1; j < hs; j++){
+
+            }
+        }
 
     }
 
