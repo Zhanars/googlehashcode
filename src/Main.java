@@ -2,17 +2,45 @@ import java.util.*;
 import java.io.*;
 
 public class Main{
-    public static void main(String[] argv) throws IOException{
-        new Main().run();
-    }
     PrintWriter pw;
+
+    {
+        try {
+            pw = new PrintWriter(new File("a_ output.txt"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     Scanner sc;
-    public void run() throws IOException{
-        sc = new Scanner(new File("a_example.txt"));
-        pw = new PrintWriter(new File("a_ output.txt"));
-        int n = sc.nextInt(), vs = 0, hs = 0;
-        String vertical[][] = new String[n][102];
-        String horisontal[][] = new String[n][102];
+
+    {
+        try {
+            sc = new Scanner(new File("a_example.txt"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    int n = 0, vs = 0, hs = 0;
+    String vertical[][] = new String[100000][102];
+    String horisontal[][] = new String[100000][102];
+    public int common(int a, int b){
+        int result = 0;
+        for (int i = 1; i <= Integer.parseInt(vertical[a][0]); i++){
+            for (int j = 1; j <= Integer.parseInt(vertical[b][0]); j++){
+                if (vertical[a][i].equals(vertical[b][j])){
+                    result++;
+                }
+            }
+        }
+        return result;
+    }
+    public static void main(String[] argv){
+        new Main().read();
+    }
+    public void read(){
+        n = sc.nextInt();
         for (int i = 0; i <= n; i++){
             String str = sc.nextLine();
             String abc[] = str.split(" ");
@@ -29,8 +57,6 @@ public class Main{
                 hs++;
             }
         }
-
-        pw.close();
     }
 
 }
