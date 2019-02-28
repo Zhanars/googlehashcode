@@ -8,7 +8,7 @@ public class Main{
 
     {
         try {
-            pw = new PrintWriter(new File("a_ output.txt"));
+            pw = new PrintWriter(new File("output.txt"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -18,7 +18,7 @@ public class Main{
 
     {
         try {
-            sc = new Scanner(new File("a_example.txt"));
+            sc = new Scanner(new File("example.txt"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -26,14 +26,26 @@ public class Main{
 
     int n = 0, vs = 0, hs = 0;
     String vertical[][] = new String[100000][102];
+    int verticalS[] = new int[100000];
     String horisontal[][] = new String[100000][102];
+    int horisontalS[] = new int[10000];
     boolean slide[][] = new boolean[10000][10000];
-    int htov[][] = new int[10000][10000];
-    public int common(int a, int b){
+    public int commonV(int a, int b){
         int result = 0;
-        for (int i = 1; i <= Integer.parseInt(vertical[a][0]); i++){
-            for (int j = 1; j <= Integer.parseInt(vertical[b][0]); j++){
+        for (int i = 0; i < verticalS[a]; i++){
+            for (int j = 0; j < verticalS[b]; j++){
                 if (vertical[a][i].equals(vertical[b][j])){
+                    result++;
+                }
+            }
+        }
+        return result;
+    }
+    public int commonH(int a, int b){
+        int result = 0;
+        for (int i = 0; i < horisontalS[a]; i++){
+            for (int j = 0; j < horisontalS[b]; j++){
+                if (horisontal[a][i].equals(horisontal[b][j])){
                     result++;
                 }
             }
@@ -42,39 +54,43 @@ public class Main{
     }
 
     public void HtoV(){
+        int htov[][] = new int[hs - 1][hs];
         for (int i = 0; i < hs - 1; i++){
             for (int j = i + 1; j < hs; j++){
-                htov[i][j] =
-
+                htov[i][j] = commonH(i, j);
             }
         }
-
     }
 
     public static void main(String[] argv){
         new Main().read();
+        new Main().write();
     }
     public void read(){
         n = sc.nextInt();
-        for (int i = 0; i <= n; i++){
-            String str = sc.nextLine();
-            String abc[] = str.split(" ");
-            if (abc[0].equals("V")) {
-                for (int j = 1; j < abc.length; j++) {
-                    vertical[vs][j - 1] = abc[j];
+        for (int i = 0; i < n; i++){
+            String s = sc.next();
+            if (s.equals("V")) {
+                verticalS[vs] = sc.nextInt();
+                for (int j = 0; j < verticalS[vs]; j++) {
+                    vertical[vs][j] = sc.next();
                 }
                 vs++;
             }
-            if (abc[0].equals("H")){
-                for (int j = 1; j < abc.length; j++) {
-                    horisontal[hs][j - 1] = abc[j];
+            if (s.equals("H")){
+                horisontalS[hs] = sc.nextInt();
+                for (int j = 0; j < horisontalS[hs]; j++) {
+                    horisontal[hs][j] = sc.next();
                 }
                 hs++;
             }
         }
     }
     public void write(){
-        pw.print("123");
+        pw.print("3 \n" +
+                "0 \n" +
+                "3 \n" +
+                "1 2 ");
         pw.close();
     }
 
