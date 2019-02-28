@@ -44,6 +44,7 @@ public class Main{
     public void HtoV(){
         for (int i = 0; i < hs - 1; i++){
             for (int j = i + 1; j < hs; j++){
+                htov[i][j] =
 
             }
         }
