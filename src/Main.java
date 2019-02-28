@@ -25,6 +25,7 @@ public class Main{
     int n = 0, vs = 0, hs = 0;
     String vertical[][] = new String[100000][102];
     String horisontal[][] = new String[100000][102];
+    boolean slide[][] = new boolean[100000][100000];
     public int common(int a, int b){
         int result = 0;
         for (int i = 1; i <= Integer.parseInt(vertical[a][0]); i++){
@@ -36,6 +37,11 @@ public class Main{
         }
         return result;
     }
+
+    public void HtoV(){
+
+    }
+
     public static void main(String[] argv){
         new Main().read();
     }
@@ -58,5 +64,12 @@ public class Main{
             }
         }
     }
+    public void write(){
+        pw.print("123");
+        pw.close();
+    }
 
+    public void solve(){
+
+    }
 }
